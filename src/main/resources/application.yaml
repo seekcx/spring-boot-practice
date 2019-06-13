@@ -1,0 +1,18 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: always
+  datasource:
+    name: practice
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: secret
+    url: jdbc:mysql://127.0.0.1:3306/practice?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2b8
+    tomcat:
+      default-auto-commit: false
+server:
+  port: 80
+mybatis:
+  config-location: classpath:mybatis.xml
+  mapper-locations: classpath:mybatis/*.xml
