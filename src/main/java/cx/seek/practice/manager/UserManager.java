@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Component
 @Transactional(readOnly = true)
 public class UserManager {
@@ -15,5 +17,9 @@ public class UserManager {
 
     public User findOne(int id) {
         return userMapper.findOne(id);
+    }
+
+    public List<User> findAll() {
+        return userMapper.findAll();
     }
 }
