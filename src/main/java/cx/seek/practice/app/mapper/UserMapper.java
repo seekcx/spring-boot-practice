@@ -1,6 +1,6 @@
-package cx.seek.practice.mapper;
+package cx.seek.practice.app.mapper;
 
-import cx.seek.practice.entity.User;
+import cx.seek.practice.app.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

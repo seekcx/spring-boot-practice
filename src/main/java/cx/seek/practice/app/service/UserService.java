@@ -1,7 +1,7 @@
-package cx.seek.practice.service;
+package cx.seek.practice.app.service;
 
-import cx.seek.practice.entity.User;
-import cx.seek.practice.manager.UserManager;
+import cx.seek.practice.app.entity.User;
+import cx.seek.practice.app.manager.UserManager;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
