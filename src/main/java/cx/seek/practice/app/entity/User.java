@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "用户")
 public class User {
 
-    @ApiModelProperty(value = "用户ID")
+    @ApiModelProperty(value = "ID")
     private Integer id;
 
     @ApiModelProperty(value = "用户名", required = true)
