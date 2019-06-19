@@ -1,11 +1,9 @@
 package cx.seek.practice.app.controller;
 
-import com.github.pagehelper.PageHelper;
-import cx.seek.practice.app.entity.User;
-import cx.seek.practice.app.service.UserService;
 import io.swagger.annotations.Api;
+import cx.seek.practice.app.entity.User;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
+import cx.seek.practice.app.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,15 +19,13 @@ public class UserController {
 
     @GetMapping
     @ApiOperation("用户列表")
-    public List<User> index(@RequestParam(value = "page", defaultValue = "1") int page,
-                            @RequestParam(value = "size", defaultValue = "10") int size) {
-        PageHelper.startPage(page, size);
-        return userService.findAll();
+    public List<User> index() {
+        return userService.list();
     }
 
     @GetMapping("/{id}")
     @ApiOperation("用户详情")
-    public User user(@PathVariable("id") int id) {
-        return userService.findOne(id);
+    public User user(@PathVariable("id") long id) {
+        return userService.detail(id);
     }
 }
