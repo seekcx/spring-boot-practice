@@ -4,9 +4,7 @@ import lombok.Data;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity(name = "user")
@@ -14,7 +12,7 @@ import javax.persistence.Id;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(value = "ID")
     private Long id;
 
@@ -23,4 +21,8 @@ public class User {
 
     @ApiModelProperty(value = "身份证号")
     private String idNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 }
