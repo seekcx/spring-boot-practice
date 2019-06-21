@@ -1,15 +1,15 @@
 package cx.seek.practice.app.controller;
 
-import com.github.pagehelper.PageHelper;
-import cx.seek.practice.app.entity.User;
-import cx.seek.practice.app.service.UserService;
+import java.util.List;
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
+import cx.seek.practice.app.entity.User;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
+import cx.seek.practice.app.service.UserService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 @Api(tags = "用户")
 @RestController
@@ -21,10 +21,11 @@ public class UserController {
 
     @GetMapping
     @ApiOperation("用户列表")
-    public List<User> index(@RequestParam(value = "page", defaultValue = "1") int page,
-                            @RequestParam(value = "size", defaultValue = "10") int size) {
-        PageHelper.startPage(page, size);
-        return userService.findAll();
+    public IPage<User> index(@RequestParam(value = "page", defaultValue = "1") int page,
+                             @RequestParam(value = "size", defaultValue = "10") int size) {
+        Page<User> pageable = new Page<>(page, size);
+        pageable.setDesc("id");
+        return userService.findAll(pageable);
     }
 
     @GetMapping("/{id}")
@@ -33,3 +34,4 @@ public class UserController {
         return userService.findOne(id);
     }
 }
+
